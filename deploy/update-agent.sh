@@ -7,7 +7,7 @@
 # REQUIRED: set GITHUB_REPO below to "yourusername/pyupdate-demo"
 set -euo pipefail
 
-GITHUB_REPO="yourusername/pyupdate-demo"   # <-- EDIT THIS
+GITHUB_REPO="techy-nu/demo"
 APP_ROOT="/opt/pyupdate-demo"
 SERVICE_NAME="pyupdate-demo.service"
 STATE_FILE="${APP_ROOT}/state.json"
