@@ -42,7 +42,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(f"pyupdate-demo running version {VERSION}\n".encode())
+            self.wfile.write(f"[updated]pyupdate-demo running version {VERSION}\n".encode())
         else:
             self.send_response(404)
             self.end_headers()
