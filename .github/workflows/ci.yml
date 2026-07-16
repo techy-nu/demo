@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Syntax check
+        run: python3 -m py_compile app/main.py
+
+      - name: Smoke test the service starts and answers healthz
+        run: |
+          APP_VERSION=ci-test APP_PORT=8080 python3 app/main.py &
+          SERVER_PID=$!
+          sleep 1
+          curl -fsS http://127.0.0.1:8080/healthz | tee /dev/stderr | grep -q '"status": "ok"'
+          kill $SERVER_PID
