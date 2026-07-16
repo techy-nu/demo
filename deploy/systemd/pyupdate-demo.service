@@ -1,0 +1,16 @@
+[Unit]
+Description=PyUpdate Demo Application
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pyupdate-demo/current
+EnvironmentFile=/opt/pyupdate-demo/current/VERSION
+ExecStart=/usr/bin/python3 /opt/pyupdate-demo/current/app/main.py
+Restart=on-failure
+RestartSec=3
+User=pyupdate
+Group=pyupdate
+
+[Install]
+WantedBy=multi-user.target

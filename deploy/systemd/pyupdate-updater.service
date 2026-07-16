@@ -1,0 +1,8 @@
+[Unit]
+Description=PyUpdate Demo - Update Check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/pyupdate-demo/deploy/update-agent.sh

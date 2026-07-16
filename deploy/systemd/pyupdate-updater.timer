@@ -1,0 +1,10 @@
+[Unit]
+Description=Run PyUpdate Demo update check every 2 minutes (demo interval - use 15min+ in production)
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
